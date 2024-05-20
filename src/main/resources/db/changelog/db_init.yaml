@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: FLB
+      changes:
+        - createTable:
+            tableName: user
+            schemaName: public
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+              - column:
+                  name: last_name
+                  type: varchar(255)
+              - column:
+                  name: birth_day
+                  type: date
+
