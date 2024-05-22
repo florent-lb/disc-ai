@@ -10,4 +10,6 @@ public interface ChatChannelPort {
     void sendMessage(String json);
 
     List<User> listAllUsers();
+
+    void close();
 }

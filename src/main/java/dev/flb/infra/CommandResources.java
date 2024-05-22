@@ -22,4 +22,11 @@ public class CommandResources {
         communicationService.openChannel();
     }
 
+    @POST
+    @Path("stop")
+    @Consumes(MediaType.WILDCARD)
+    public void shutdownApp() {
+        communicationService.closeChannel();
+    }
+
 }

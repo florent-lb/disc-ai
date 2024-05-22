@@ -1,77 +1,85 @@
 {
-  "model" : "gpt-3.5-turbo",
-  "messages" : [ {
-    "role" : "system",
-    "content" : "You must choose tool, no textual response is needed.\n\nIf you don't found any valid tool, please return only the text : NOT_FOUND\n"
-  }, {
-    "role" : "user",
-    "content" : "Liste les utilisateurs du discord"
-  }, {
-    "role" : "assistant",
-    "tool_calls" : [ {
-      "id" : "call_QbmSv711Htdc4RUSCBt1xUVF",
-      "type" : "function",
-      "function" : {
-        "name" : "listUsersInChannel",
-        "arguments" : "{}"
+  "model": "gpt-3.5-turbo",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You may choose a tool or answer the text NOT_FOUND.       \nIf you don't found any valid tool, return only the text : NOT_FOUND\n"
+    },
+    {
+      "role": "user",
+      "content": "donne moi la liste des utilisateurs"
+    },
+    {
+      "role": "assistant",
+      "tool_calls": [
+        {
+          "id": "call_rFWmfpdyrq9Uv5WlICrSHKoO",
+          "type": "function",
+          "function": {
+            "name": "listUsersWithUsers",
+            "arguments": "{}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_rFWmfpdyrq9Uv5WlICrSHKoO",
+      "content": "[ {\r\n  \"id\" : \"8cbda18d-d4c4-4c17-b7d6-1557e07de6a8\",\r\n  \"name\" : \"ROBERTS\",\r\n  \"birthDate\" : \"2001-02-21\"\r\n}, {\r\n  \"id\" : \"72f1d788-f682-4b0a-aeb1-9443662768d9\",\r\n  \"name\" : \"DOE\",\r\n  \"birthDate\" : \"1995-07-03\"\r\n} ]"
+    }
+  ],
+  "temperature": 0.0,
+  "top_p": 1.0,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "listUsersWithUsers",
+        "description": "When a user want to list users in database. this is the default list of users.\n---\nA null message returned is expected\n",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "required": []
+        }
       }
-    } ]
-  }, {
-    "role" : "tool",
-    "tool_call_id" : "call_QbmSv711Htdc4RUSCBt1xUVF",
-    "content" : "Success"
-  } ],
-  "temperature" : 0.0,
-  "top_p" : 1.0,
-  "presence_penalty" : 0.0,
-  "frequency_penalty" : 0.0,
-  "tools" : [ {
-    "type" : "function",
-    "function" : {
-      "name" : "listUsers",
-      "description" : "When a user want to list users in database. this is the default list of users.",
-      "parameters" : {
-        "type" : "object",
-        "properties" : { },
-        "required" : [ ]
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "listUsersInChannelWithUsers",
+        "description": "When a user want to list users in the discord.\n---\nA null message returned is expected",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "required": []
+        }
       }
     }
-  }, {
-    "type" : "function",
-    "function" : {
-      "name" : "listUsersInChannel",
-      "description" : "When a user want to list users in the discord.",
-      "parameters" : {
-        "type" : "object",
-        "properties" : { },
-        "required" : [ ]
-      }
-    }
-  } ]
+  ]
 }
-
-
 // ###################### ANSWER #################################
 {
-  "id": "chatcmpl-9RlaQovuewSiPX6IezvMvzKijBMNR",
+  "id": "chatcmpl-9RnB2HHe9cB8ADhR2LweHG9bWCiWv",
   "object": "chat.completion",
-  "created": 1716404806,
+  "created": 1716410920,
   "model": "gpt-3.5-turbo-0125",
   "choices": [
     {
       "index": 0,
       "message": {
         "role": "assistant",
-        "content": "Les utilisateurs du discord ont �t� list�s avec succ�s."
+        "content": "Voici la liste des utilisateurs :\n1. Nom: ROBERTS, Date de naissance: 21 f�vrier 2001\n2. Nom: DOE, Date de naissance: 3 juillet 1995"
       },
       "logprobs": null,
       "finish_reason": "stop"
     }
   ],
   "usage": {
-    "prompt_tokens": 131,
-    "completion_tokens": 13,
-    "total_tokens": 144
+    "prompt_tokens": 271,
+    "completion_tokens": 48,
+    "total_tokens": 319
   },
   "system_fingerprint": null
 }

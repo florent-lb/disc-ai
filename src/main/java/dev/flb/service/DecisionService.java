@@ -11,9 +11,11 @@ public class DecisionService {
     @Inject
     AIPort aiPort;
 
+    @Inject
+    ChatChannelPort chatChannelPort;
+
     public void getDecision(String message) {
-        String action = aiPort.action(message);
-        log.info("Returned decision %s".formatted(action));
+        chatChannelPort.sendMessage(aiPort.action(message));
     }
 
 }

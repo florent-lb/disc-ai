@@ -8,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
-import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.requests.RestAction;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
@@ -27,10 +26,7 @@ public class DiscordBot implements ChatChannelPort {
     private final UserDiscordMapper userMapper;
     @ConfigProperty(name = "discord.token")
     String token;
-    @ConfigProperty(name = "discord.channel.userRequest")
-    String userRequestChannelName;
     private Optional<JDA> jda = Optional.empty();
-    private TextChannel userRequestChannel;
 
     @Override
     public void open() {
@@ -75,6 +71,12 @@ public class DiscordBot implements ChatChannelPort {
         connectBot();
         return jda.get()
                 .getUsers().stream().map(userMapper::fromDiscord).toList();
+    }
+
+    @Override
+    public void close() {
+        jda.ifPresent(JDA::shutdownNow);
+        jda = Optional.empty();
     }
 
 }

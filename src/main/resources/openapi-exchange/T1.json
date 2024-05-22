@@ -1,53 +1,45 @@
 {
-  "model": "gpt-3.5-turbo",
-  "messages": [
-    {
-      "role": "system",
-      "content": "You must choose tool, no textual response is needed.\n\nIf you don't found any valid tool, please return only the text : NOT_FOUND\n"
-    },
-    {
-      "role": "user",
-      "content": "Liste les utilisateurs du discord"
-    }
-  ],
-  "temperature": 0.0,
-  "top_p": 1.0,
-  "presence_penalty": 0.0,
-  "frequency_penalty": 0.0,
-  "tools": [
-    {
-      "type": "function",
-      "function": {
-        "name": "listUsers",
-        "description": "When a user want to list users in database. this is the default list of users.",
-        "parameters": {
-          "type": "object",
-          "properties": {},
-          "required": []
-        }
-      }
-    },
-    {
-      "type": "function",
-      "function": {
-        "name": "listUsersInChannel",
-        "description": "When a user want to list users in the discord.",
-        "parameters": {
-          "type": "object",
-          "properties": {},
-          "required": []
-        }
+  "model" : "gpt-3.5-turbo",
+  "messages" : [ {
+    "role" : "system",
+    "content" : "You may choose a tool or answer the text NOT_FOUND.       \nIf you don't found any valid tool, return only the text : NOT_FOUND\n"
+  }, {
+    "role" : "user",
+    "content" : "donne moi la liste des utilisateurs"
+  } ],
+  "temperature" : 0.0,
+  "top_p" : 1.0,
+  "presence_penalty" : 0.0,
+  "frequency_penalty" : 0.0,
+  "tools" : [ {
+    "type" : "function",
+    "function" : {
+      "name" : "listUsersWithUsers",
+      "description" : "When a user want to list users in database. this is the default list of users.\n---\nA null message returned is expected\n",
+      "parameters" : {
+        "type" : "object",
+        "properties" : { },
+        "required" : [ ]
       }
     }
-  ]
+  }, {
+    "type" : "function",
+    "function" : {
+      "name" : "listUsersInChannelWithUsers",
+      "description" : "When a user want to list users in the discord.\n---\nA null message returned is expected",
+      "parameters" : {
+        "type" : "object",
+        "properties" : { },
+        "required" : [ ]
+      }
+    }
+  } ]
 }
-
 // #################  ANSWER
-
 {
-  "id": "chatcmpl-9RlaPfZVu4Vj55My5Mng7jbSgIFlr",
+  "id": "chatcmpl-9RnB1A1xtCBKYst4YsHWnf1XwhTUI",
   "object": "chat.completion",
-  "created": 1716404805,
+  "created": 1716410919,
   "model": "gpt-3.5-turbo-0125",
   "choices": [
     {
@@ -57,10 +49,10 @@
         "content": null,
         "tool_calls": [
           {
-            "id": "call_QbmSv711Htdc4RUSCBt1xUVF",
+            "id": "call_rFWmfpdyrq9Uv5WlICrSHKoO",
             "type": "function",
             "function": {
-              "name": "listUsersInChannel",
+              "name": "listUsersWithUsers",
               "arguments": "{}"
             }
           }
@@ -71,9 +63,9 @@
     }
   ],
   "usage": {
-    "prompt_tokens": 108,
+    "prompt_tokens": 134,
     "completion_tokens": 12,
-    "total_tokens": 120
+    "total_tokens": 146
   },
   "system_fingerprint": null
 }

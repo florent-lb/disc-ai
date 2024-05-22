@@ -14,4 +14,7 @@ public class CommunicationService {
         chatChannelPort.open();
     }
 
+    public void closeChannel() {
+        chatChannelPort.close();
+    }
 }
