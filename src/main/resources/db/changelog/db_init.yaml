@@ -4,7 +4,7 @@ databaseChangeLog:
       author: FLB
       changes:
         - createTable:
-            tableName: user
+            tableName: users
             schemaName: public
             columns:
               - column:
@@ -16,4 +16,28 @@ databaseChangeLog:
               - column:
                   name: birth_day
                   type: date
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  value: "8cbda18d-d4c4-4c17-b7d6-1557e07de6a8"
+              - column:
+                  name: last_name
+                  value: "ROBERTS"
+              - column:
+                  name: birth_day
+                  valueDate: "2001-02-21"
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  value: "72f1d788-f682-4b0a-aeb1-9443662768d9"
+              - column:
+                  name: last_name
+                  value: "DOE"
+              - column:
+                  name: birth_day
+                  valueDate: "1995-07-03"
 

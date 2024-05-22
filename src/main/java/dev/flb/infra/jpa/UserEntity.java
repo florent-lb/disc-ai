@@ -15,7 +15,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 @Entity
-@Table(name = "User")
+@Table(name = "users",schema = "public")
 @Getter
 @Setter
 public class UserEntity extends PanacheEntityBase {
