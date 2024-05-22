@@ -18,7 +18,7 @@ public class CommandResources {
     @POST
     @Path("start")
     @Consumes(MediaType.WILDCARD)
-    public void askSomething() {
+    public void startBot() {
         communicationService.openChannel();
     }
 

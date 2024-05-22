@@ -1,0 +1,77 @@
+{
+  "model" : "gpt-3.5-turbo",
+  "messages" : [ {
+    "role" : "system",
+    "content" : "You must choose tool, no textual response is needed.\n\nIf you don't found any valid tool, please return only the text : NOT_FOUND\n"
+  }, {
+    "role" : "user",
+    "content" : "Liste les utilisateurs du discord"
+  }, {
+    "role" : "assistant",
+    "tool_calls" : [ {
+      "id" : "call_QbmSv711Htdc4RUSCBt1xUVF",
+      "type" : "function",
+      "function" : {
+        "name" : "listUsersInChannel",
+        "arguments" : "{}"
+      }
+    } ]
+  }, {
+    "role" : "tool",
+    "tool_call_id" : "call_QbmSv711Htdc4RUSCBt1xUVF",
+    "content" : "Success"
+  } ],
+  "temperature" : 0.0,
+  "top_p" : 1.0,
+  "presence_penalty" : 0.0,
+  "frequency_penalty" : 0.0,
+  "tools" : [ {
+    "type" : "function",
+    "function" : {
+      "name" : "listUsers",
+      "description" : "When a user want to list users in database. this is the default list of users.",
+      "parameters" : {
+        "type" : "object",
+        "properties" : { },
+        "required" : [ ]
+      }
+    }
+  }, {
+    "type" : "function",
+    "function" : {
+      "name" : "listUsersInChannel",
+      "description" : "When a user want to list users in the discord.",
+      "parameters" : {
+        "type" : "object",
+        "properties" : { },
+        "required" : [ ]
+      }
+    }
+  } ]
+}
+
+
+// ###################### ANSWER #################################
+{
+  "id": "chatcmpl-9RlaQovuewSiPX6IezvMvzKijBMNR",
+  "object": "chat.completion",
+  "created": 1716404806,
+  "model": "gpt-3.5-turbo-0125",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "Les utilisateurs du discord ont �t� list�s avec succ�s."
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 131,
+    "completion_tokens": 13,
+    "total_tokens": 144
+  },
+  "system_fingerprint": null
+}
